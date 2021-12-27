@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PreferMapper">
+	
+	<insert id="createPrefer" parameterType="model.Prefer_info">
+	insert into Prefer_info values(#{seqno},#{prefer_id},#{prefer_picture},#{prefer_price},
+	#{prefer_calorie})
+	</insert>
+
+	<select id="selectPrefer" resultType="model.Prefer_info">
+		select * from Prefer_info order by seqno
+	</select>
+
+	<select id="getAll" resultType="model.Prefer_info">
+	select * from prefer_info where prefer_id=#{prefer_id}
+	</select>
+	
+	<delete id="deletePrefer">
+	delete from Prefer_info where Prefer_picture = #{prefer_picture}
+	</delete>
+	
+	<select id="selectMaxPrefer" resultType="Integer">
+	select max(seqno) max_seqno from Prefer_info
+	</select>
+	
+</mapper>

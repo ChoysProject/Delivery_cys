@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Managermapper">
+	
+	
+	<delete id="delete">
+		delete from manager_info where manager_number=#{manager_number}
+	</delete>
+	
+	<update id="updateState" parameterType="model.Manager_info">
+		update manager_info set manager_state=#{manager_state} where manager_number=#{manager_number}
+	</update>
+	
+	<insert id="creatState" parameterType="model.Manager_info">
+		insert into manager_info values(#{manager_id},#{manager_number},#{manager_state})
+	</insert>
+	
+	<select id="getAll" resultType="model.Manager_info">
+		select * from manager_info where manager_number = #{manager_number}
+	</select>
+	
+	
+	<update id="updateDelay">
+		update delay_info set delay=#{delay}
+	</update>
+	
+	<select id="getdelay" resultType="model.Delay_info">
+		select * from delay_info where delay_id = 'a'
+	</select>
+	
+</mapper>

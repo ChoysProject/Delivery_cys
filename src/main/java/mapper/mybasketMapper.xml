@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Mybasketmapper">
+	<select id="selectMaxMybasket" resultType="Integer">
+		select max(mybasket_num) max_mybasket_num from mybakset_info
+	</select>
+	
+	
+	<insert id="insertmybasket" parameterType="model.Mybasket_info">
+	insert into mybasket_info values(#{mybasket_id},#{mybasket_num},#{mybasket_name},#{mybasket_some},
+	#{mybasket_calorie},#{mybasket_picture})
+	</insert>
+
+	<delete id="deletemybasket">
+		delete from mybasket_info where mybasket_id=#{mybasket_id}
+	</delete>
+	
+	<select id="selectmybasket">
+		select mybasket_info.mybasket_num mybasket_num,
+		mybasket_info.mybasket_some mybasket_some,
+		m.menu_price menu_price,
+		m.menu_name menu_name
+		form mybasket_info mybasket_info, menu_info m
+		where mybasket_info.mybasket_num = m.menu_id and mybasket_info.mybasket_info =#{mybakset_num}
+	</select>
+</mapper>
